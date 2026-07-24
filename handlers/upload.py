@@ -3,6 +3,14 @@ import json
 import asyncio
 from typing import List, Dict, Any, Tuple, Optional
 
+from utils.parser import parse_quiz_file
+
+from utils.uploader import upload_quizzes
+
+from utils.file_reader import read_text_from_message
+
+from utils.helpers import is_owner, normalize_channel_id, clip_text
+
 from pyrogram.types import Message
 
 from config import OWNER_ID, CHANNEL_ID, DEFAULT_DELAY
