@@ -13,7 +13,7 @@ from pyrogram.types import Message
 # =========================
 API_ID = int(os.getenv("API_ID", "22470912"))
 API_HASH = os.getenv("API_HASH", "511be78079ed5d4bd4c967bc7b5ee023")
-BOT_TOKEN = os.getenv("BOT_TOKEN", "")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "8254141632:AAFvRU6E4amexKzidBe2Ij9pBvkoCYozHNg")
 OWNER_ID = int(os.getenv("OWNER_ID", "7678862761"))
 CHANNEL_ID = os.getenv("CHANNEL_ID", "")  # can be @channelusername or -100xxxxxxxxxx
 DEFAULT_DELAY = int(os.getenv("DEFAULT_DELAY", "2"))
