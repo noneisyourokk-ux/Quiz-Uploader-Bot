@@ -436,12 +436,9 @@ async def document_handler(client: Client, message: Message):
 
         async def document_handler(client, message):
     if state["uploading"]:
-        return
-
-    if uploading_task:
-        ...
-
-    uploading_task = asyncio.create_task(...)
+        return await message.reply_text(
+            "An upload is already running. Use /stop first."
+        )
 
     except Exception as e:
         log.exception("Document upload failed")
