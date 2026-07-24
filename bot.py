@@ -309,22 +309,10 @@ async def upload_quizzes(
 # =========================
 # COMMANDS
 # =========================
-@app.on_message(filters.command("start") & filters.private)
-async def start_cmd(client, message):
-    log.info(f"/start received from {message.from_user.id}")
-
-    if not is_owner(message.from_user.id):
-        return await message.reply_text("This bot is owner-only.")
-    text = (
-        "Quiz Uploader Bot is ready.\n\n"
-        "Commands:\n"
-        "/uploadquiz - reply to a TXT/JSON file or send quiz text after command\n"
-        "/setdelay 2 - set delay in seconds\n"
-        "/setchannel @channelusername or -100xxxxxxxxxx\n"
-        "/stop - stop current upload\n"
-        "/help - show format\n"
-    )
-    await message.reply_text(text)
+@app.on_message(filters.private)
+async def test(client, message):
+    log.info("TEST HANDLER")
+    await message.reply_text("Hello")
 
 @app.on_message(filters.command("help") & filters.private)
 async def help_cmd(client: Client, message: Message):
