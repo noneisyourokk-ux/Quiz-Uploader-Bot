@@ -11,7 +11,9 @@ logging.basicConfig(
 )
 
 def main():
-    if not config.BOT_TOKEN or config.BOT_TOKEN == "8683892422:AAFBEVW0vxbRxqpObQsyGWcQtb1-N6wB6DU"
+    if not config.BOT_TOKEN or config.BOT_TOKEN == "YOUR_BOT_TOKEN_HERE":
+        raise ValueError("BOT_TOKEN is missing in environment variables!")
+
     app = ApplicationBuilder().token(config.BOT_TOKEN).build()
 
     # Handlers
