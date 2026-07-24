@@ -11,10 +11,10 @@ from pyrogram.types import Message
 # =========================
 # CONFIG
 # =========================
-API_ID = int(os.getenv("API_ID", "0"))
-API_HASH = os.getenv("API_HASH", "")
+API_ID = int(os.getenv("API_ID", "22470912"))
+API_HASH = os.getenv("API_HASH", "511be78079ed5d4bd4c967bc7b5ee023")
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-OWNER_ID = int(os.getenv("OWNER_ID", "0"))
+OWNER_ID = int(os.getenv("OWNER_ID", "7678862761"))
 CHANNEL_ID = os.getenv("CHANNEL_ID", "")  # can be @channelusername or -100xxxxxxxxxx
 DEFAULT_DELAY = int(os.getenv("DEFAULT_DELAY", "2"))
 
@@ -22,6 +22,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
 )
+logging.getLogger("pyrogram").setLevel(logging.DEBUG)
 log = logging.getLogger("quiz-uploader")
 
 app = Client(
