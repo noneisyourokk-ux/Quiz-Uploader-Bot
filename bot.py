@@ -434,12 +434,6 @@ async def document_handler(client: Client, message: Message):
         async def runner():
             await upload_quizzes(client, quizzes, target, reply_msg=message)
 
-        async def document_handler(client, message):
-    if state["uploading"]:
-        return await message.reply_text(
-            "An upload is already running. Use /stop first."
-        )
-
     except Exception as e:
         log.exception("Document upload failed")
         await message.reply_text(f"Error: {e}")
