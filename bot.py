@@ -451,6 +451,8 @@ async def main():
         log.warning("OWNER_ID is not set. Bot will accept all users (not recommended).")
 
     await app.start()
+    me = await app.get_me()
+    log.info(f"Logged in as @{me.username} ({me.id})")
     log.info("Bot started")
     asyncio.create_task(start_web_server())
     await idle()
