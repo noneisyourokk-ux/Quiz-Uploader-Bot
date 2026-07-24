@@ -433,6 +433,9 @@ async def document_handler(client: Client, message: Message):
 
         async def runner():
             await upload_quizzes(client, quizzes, target, reply_msg=message)
+            global uploading_task
+            uploading_task = asyncio.create_task(runner())
+            await uploading_task
 
     except Exception as e:
         log.exception("Document upload failed")
