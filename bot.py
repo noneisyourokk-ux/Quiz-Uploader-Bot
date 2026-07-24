@@ -306,7 +306,9 @@ async def upload_quizzes(
 # COMMANDS
 # =========================
 @app.on_message(filters.command("start") & filters.private)
-async def start_cmd(client: Client, message: Message):
+async def start_cmd(client, message):
+    log.info(f"/start received from {message.from_user.id}")
+
     if not is_owner(message.from_user.id):
         return await message.reply_text("This bot is owner-only.")
     text = (
