@@ -435,7 +435,8 @@ async def document_handler(client: Client, message: Message):
             await upload_quizzes(client, quizzes, target, reply_msg=message)
 
         async def document_handler(client, message):
-            global uploading_task
+    if state["uploading"]:
+        return
 
     if uploading_task:
         ...
