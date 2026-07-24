@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: quiz-uploader-bot
+    env: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: CHANNEL_ID
+        sync: false
+      - key: DEFAULT_DELAY
+        sync: false
