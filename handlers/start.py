@@ -1,40 +1,25 @@
-from pyrogram import filters
-from pyrogram.types import Message
+from telegram import Update
+from telegram.ext import ContextTypes
 
-from config import OWNER_ID
-
-def is_owner(user_id: int) -> bool:
-    return OWNER_ID == 0 or user_id == OWNER_ID
-
-async def start_cmd(client, message: Message):
-    if not is_owner(message.from_user.id):
-        return await message.reply_text("This bot is owner-only.")
-
-    text = (
-        "Quiz Uploader Bot is ready.\n\n"
-        "Commands:\n"
-        "/uploadquiz - reply to a TXT/JSON file or send quiz text after command\n"
-        "/setdelay 2 - set delay in seconds\n"
-        "/setchannel @channelusername or -100xxxxxxxxxx\n"
-        "/stop - stop current upload\n"
-        "/help - show format\n"
+async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    welcome_text = (
+        "👋 **Welcome to Quiz Uploader Bot!**\n\n"
+        "Send me a `.txt` or `.json` file containing quiz questions, "
+        "and I will publish them directly to your Telegram channel.\n\n"
+        "Use /help to see required file formats."
     )
-    await message.reply_text(text)
+    await update.message.reply_text(welcome_text, parse_mode="Markdown")
 
-async def help_cmd(client, message: Message):
-    if not is_owner(message.from_user.id):
-        return await message.reply_text("This bot is owner-only.")
-
-    text = (
-        "TXT format:\n"
-        "Question?\n"
-        "Option 1*\n"
-        "Option 2\n"
-        "Option 3\n"
-        "Option 4\n"
-        "Explanation: optional text\n\n"
-        "Blank line = next question.\n\n"
-        "JSON format:\n"
-        "[{\"question\":\"...\",\"options\":[\"A\",\"B\"],\"correct\":0,\"explanation\":\"...\"}]"
+async def help_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    help_text = (
+        "📝 **TXT Format Example:**\n"
+        "```\n"
+        "What is 2 + 2?\n"
+        "- 3\n"
+        "* - 4\n"
+        "- 5\n"
+        "-- Explanation: 2 plus 2 equals 4.\n"
+        "```\n"
+        "💡 Put an asterisk (`*`) in front of the correct answer."
     )
-    await message.reply_text(text)
+    await update.message.reply_text(help_text, parse_mode="Markdown")
