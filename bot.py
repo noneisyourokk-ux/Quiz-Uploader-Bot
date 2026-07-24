@@ -30,11 +30,12 @@ app = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
-    workdir="./"
 )
-@app.on_raw_update()
-async def raw_update_handler(client, update, users, chats):
-    log.info("Received an update from Telegram")
+@app.on_message(filters.all)
+async def debug_all(client, message):
+    log.info(
+        f"Update received: chat={message.chat.id}, user={message.from_user.id if message.from_user else None}, text={message.text}"
+    )
 
 # =========================
 # RUNTIME STATE
