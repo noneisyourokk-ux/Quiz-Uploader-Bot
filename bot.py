@@ -32,6 +32,9 @@ app = Client(
     bot_token=BOT_TOKEN,
     workdir="./"
 )
+@app.on_raw_update()
+async def raw_update_handler(client, update, users, chats):
+    log.info("Received an update from Telegram")
 
 # =========================
 # RUNTIME STATE
